@@ -28,9 +28,21 @@ Song.prototype.countName = function(){
   return this.songName.split(' ').length;
 };
 
-Song.prototype.createElement = function(){
+var anotherAwesomeSong = new Song('Redose', 'The Prototypes');
 
-};
+$(document).ready(function(){
 
-console.log(awesomeSong);
-console.log(awesomeSong.countName());
+  Song.prototype.createElement = function(){
+    $('body').append('<p>Song Name: ' + this.songName + '<br> Band Name: ' + this.bandName);
+  };
+
+  $(document).on('click', function(){
+    $('body').html(null);
+    awesomeSong.createElement();
+    anotherAwesomeSong.createElement();
+  });
+
+});
+
+  console.log(awesomeSong);
+  console.log(awesomeSong.countName());
